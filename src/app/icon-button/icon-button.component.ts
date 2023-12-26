@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgIf} from "@angular/common";
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-icon-button',
@@ -11,7 +12,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './icon-button.component.css'
 })
 export class IconButtonComponent {
-  randomIcon: any;
+  randomIconName: IconName | null = null;
 
   constructor(private library: FaIconLibrary) {}
 
@@ -21,16 +22,15 @@ export class IconButtonComponent {
 
   getRandomIcon() {
     const allIcons = Object.keys(this.library['definitions']['fas']);
-    const randomChosenIcon = allIcons[Math.floor(Math.random() * allIcons.length)];
-    const randomIcon = this.library['definitions']['fas'][randomChosenIcon]['iconName'];
-    return randomIcon;
+    const randomIconNumber = allIcons[Math.floor(Math.random() * allIcons.length)];
+    const randomIconName = this.library['definitions']['fas'][randomIconNumber]['iconName'];
+    return randomIconName;
   }
 
   handleClick() {
-    this.randomIcon = null;
+    this.randomIconName = null;
     setTimeout(() => {
-      this.randomIcon = this.getRandomIcon();
-      console.log(this.randomIcon);
+      this.randomIconName = this.getRandomIcon();
     }, 3000);
   }
 }
