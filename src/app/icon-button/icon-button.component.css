@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #5e90db;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #3a6ea5;
+}
